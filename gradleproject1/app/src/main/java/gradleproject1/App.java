@@ -103,6 +103,7 @@ public class App {
         System.out.println("Nenhum dado encontrado.");
         } else {
         for (int r1 = 0; r1 < values.size(); r1++) {
+            
             int studentAbscence = Integer.parseInt(values.get(r1).get(2).toString());
             int semesterLessons = 60;
             
