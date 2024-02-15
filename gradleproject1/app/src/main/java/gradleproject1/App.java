@@ -102,25 +102,25 @@ public class App {
         if (values == null || values.isEmpty()) {
         System.out.println("Nenhum dado encontrado.");
         } else {
-        for (int r1 = 0; r1 < values.size(); r1++) {
+        for (int c = 0; c < values.size(); c++) {
             
-            int studentAbscence = Integer.parseInt(values.get(r1).get(2).toString());
+            int studentAbscence = Integer.parseInt(values.get(c).get(2).toString());
             int semesterLessons = 60;
             
-            int p1 = Integer.parseInt(values.get(r1).get(3).toString());
-            int p2 = Integer.parseInt(values.get(r1).get(4).toString());
-            int p3 = Integer.parseInt(values.get(r1).get(5).toString());
+            int p1 = Integer.parseInt(values.get(c).get(3).toString());
+            int p2 = Integer.parseInt(values.get(c).get(4).toString());
+            int p3 = Integer.parseInt(values.get(c).get(5).toString());
             int gradesAverage = (p1+p2+p3)/3;
             
             if (studentAbscence > semesterLessons/4) {
-                result.add(r1,abscence);
+                result.add(c,abscence);
             } else if (gradesAverage < 50) {
-                result.add(r1, grades);
+                result.add(c, grades);
             } else if (gradesAverage >= 50 && gradesAverage < 70) {
-                List<Object> exam = Arrays.asList("Exame final", Math.round((100 - x)/2f));
-                result.add(r1, exam);
+                List<Object> exam = Arrays.asList("Exame final", Math.round((100 - gradesAverage)/2f));
+                result.add(c, exam);
             } else {
-                result.add(r1, approved);
+                result.add(c, approved);
             }
         }
         } return result;
