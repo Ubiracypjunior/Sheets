@@ -94,28 +94,28 @@ public class App {
             .execute();
         
         List<Object> abscence = Arrays.asList("Reprovado por Falta", "0");
-        List<Object> testsresult = Arrays.asList("Reprovado por Nota", "0");
+        List<Object> grades = Arrays.asList("Reprovado por Nota", "0");
         List<Object> approved = Arrays.asList("Aprovado", "0");
         
         List<List<Object>> result = new ArrayList<>();
         List<List<Object>> values = response.getValues();
         if (values == null || values.isEmpty()) {
-        System.out.println("No data found.");
+        System.out.println("Nenhum dado encontrado.");
         } else {
         for (int r1 = 0; r1 < values.size(); r1++) {
-            int faltas = Integer.parseInt(values.get(r1).get(2).toString());
-            int faltasTotal = 60;
+            int studentAbscence = Integer.parseInt(values.get(r1).get(2).toString());
+            int semesterLessons = 60;
             
-            int P1 = Integer.parseInt(values.get(r1).get(3).toString());
-            int P2 = Integer.parseInt(values.get(r1).get(4).toString());
-            int P3 = Integer.parseInt(values.get(r1).get(5).toString());
-            int x = (P1+P2+P3)/3;
+            int p1 = Integer.parseInt(values.get(r1).get(3).toString());
+            int p2 = Integer.parseInt(values.get(r1).get(4).toString());
+            int p3 = Integer.parseInt(values.get(r1).get(5).toString());
+            int gradesAverage = (p1+p2+p3)/3;
             
-            if (faltas > faltasTotal/4) {
+            if (studentAbscence > semesterLessons/4) {
                 result.add(r1,abscence);
-            } else if (x < 50) {
-                result.add(r1, testsresult);
-            } else if (x >= 50 && x < 70) {
+            } else if (gradesAverage < 50) {
+                result.add(r1, grades);
+            } else if (gradesAverage >= 50 && gradesAverage < 70) {
                 List<Object> exam = Arrays.asList("Exame final", Math.round((100 - x)/2f));
                 result.add(r1, exam);
             } else {
